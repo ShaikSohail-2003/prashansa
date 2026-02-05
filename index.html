@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>For My Valentine ❤️</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;500&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  height: 100vh;
+  background: linear-gradient(135deg, #ff758c, #ff7eb3);
+  font-family: 'Poppins', sans-serif;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.container {
+  text-align: center;
+  padding: 30px;
+  max-width: 500px;
+}
+
+h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 3rem;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.6;
+}
+
+button {
+  margin-top: 25px;
+  padding: 15px 35px;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 30px;
+  background: white;
+  color: #ff4f7b;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.hidden {
+  display: none;
+}
+
+/* Hearts */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  font-size: 24px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-120vh) scale(1.5);
+    opacity: 0;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container" id="page1">
+  <h1>Hey Love ❤️</h1>
+  <p>
+    I built this little website just for you.<br>
+    Because you deserve something special… always.
+  </p>
+  <button onclick="nextPage()">Tap to Continue 💕</button>
+</div>
+
+<div class="container hidden" id="page2">
+  <h1>You Mean So Much 💖</h1>
+  <p>
+    Every smile of yours makes my world brighter.<br>
+    Every moment with you feels like magic.
+  </p>
+  <button onclick="nextPage()">One More Thing 🌹</button>
+</div>
+
+<div class="container hidden" id="page3">
+  <h1>So I Have a Question… 💌</h1>
+  <p style="font-size:1.4rem; margin-top:20px;">
+    Will you be my Valentine? 💕
+  </p>
+  <button onclick="sayYes()">YES 😍</button>
+</div>
+
+<div class="container hidden" id="page4">
+  <h1>YAYYYYY 💘</h1>
+  <p>
+    You just made me the happiest person alive 💖<br>
+    I love you more than words can say.
+  </p>
+  <p style="margin-top:15px;">Forever yours 💍</p>
+</div>
+
+<script>
+let currentPage = 1;
+
+function nextPage() {
+  document.getElementById(`page${currentPage}`).classList.add('hidden');
+  currentPage++;
+  document.getElementById(`page${currentPage}`).classList.remove('hidden');
+}
+
+function sayYes() {
+  nextPage();
+  setInterval(createHeart, 300);
+}
+
+function createHeart() {
+  const heart = document.createElement('div');
+  heart.className = 'heart';
+  heart.innerHTML = '❤️';
+  heart.style.left = Math.random() * 100 + 'vw';
+  heart.style.animationDuration = 4 + Math.random() * 3 + 's';
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, 7000);
+}
+</script>
+
+</body>
+</html>
